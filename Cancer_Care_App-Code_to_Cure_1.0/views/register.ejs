@@ -1,0 +1,33 @@
+﻿<%- include('partials/header') %>
+<div id="register" class="animate form">
+    <form method="post" autocomplete="on">
+        <h1>Create Account</h1>
+        <% if(locals.error) { %>
+            <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+        <p>
+            <label for="firstName">First name</label>
+            <input type="text" name="firstName" id="firstName" value="<%= locals.firstName || '' %>" placeholder="Enter your first name" required="required" />
+        </p>
+        <p>
+            <label for="lastName">Last name</label>
+            <input type="text" name="lastName" id="lastName" value="<%= locals.lastName || '' %>" placeholder="Enter your last name" required="required"/>
+        </p>
+        <p>
+            <label for="username" class="uname" >Username</label>
+            <input type="text" name="username" id="username" value="<%= locals.username || '' %>" placeholder="Create a username" required="required" />
+        </p>
+        <p>
+            <label for="password" class="youpasswd">Password</label>
+            <input type="password" name="password" id="password" placeholder="Create a password" required="required" />
+        </p>
+        <p class="signin button"> 
+            <input type="submit" value="Sign up"/> 
+        </p>
+        <p class="change_link">  
+            Already a member ?
+            <a href="/login" class="to_login"> Log in </a>
+        </p>
+    </form>
+</div>
+<%- include('partials/footer') %>

@@ -1,0 +1,32 @@
+﻿<%- include('partials/header') %>
+<div id="login" class="animate form">
+    <form method="post" autocomplete="on">
+        <h1>Log in</h1>
+        <% if(locals.error) { %>
+            <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+        <% if(locals.success) { %>
+            <div class="alert alert-success"><%= success %></div>
+        <% } %>
+        <p>
+            <label for="username" class="uname">Username</label>
+            <input type="text" name="username" id="username" value="<%= locals.username || '' %>" required="required" placeholder="Enter your username"/>
+        </p>
+        <p>
+            <label for="password" class="youpasswd">Password</label>
+            <input type="password" name="password" id="password" required="required" placeholder="Enter your password" />
+        </p>
+        <p class="keeplogin"> 
+            <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+            <label for="loginkeeping">Keep me logged in</label>
+        </p>
+        <p class="login button"> 
+            <input type="submit" value="Log in"/> 
+        </p>
+        <p class="change_link">
+            New member?
+            <a href="/register" class="to_register">Sign up</a>
+        </p>
+    </form>
+</div>
+<%- include('partials/footer') %>
