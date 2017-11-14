@@ -8,11 +8,15 @@
           <meta name="author" content="">
           <title>Cancer Care App - Code to Cure 1.0</title>
           <!-- Bootstrap core CSS-->
-          <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-          <!-- Custom fonts for this template-->
-          <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
           <!-- Custom styles for this template-->
           <link href="css/sb-admin.css" rel="stylesheet">
+          <link rel="stylesheet" type="text/css" href="/app/css/inbox.css"/>
+          <link rel="stylesheet" type="text/css" href="/app/css/events.css"/>
+          <script src="https://use.fontawesome.com/7d636087c5.js"></script>
+
+
+
     </head>
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         
@@ -20,7 +24,7 @@
         <header>
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-                <a class="navbar-brand" href="index.html">Cancer Care App - Code to Cure 1.0</a>
+                <a class="navbar-brand" ui-sref="home">Cancer Care App - Code to Cure 1.0</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -29,34 +33,34 @@
                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home" ng-class="{active: activeTab === 'home'}">
                             <a class="nav-link" ui-sref="home">
                                 <i class="fa fa-fw fa-home"></i>
-                                <span class="nav-link-text">Home</span></a>
+                                <span class="nav-link-text">Home</span>
                             </a>
                         </li>
-                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Medication">
-                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMedication" data-parent="#exampleAccordion">
-                            <i class="fa fa-fw fa-medkit"></i>
-                            <span class="nav-link-text">Medication</span>
-                          </a>
-                          <ul class="sidenav-second-level collapse" id="collapseMedication">
-                            <li>
-                              <a href="blank.html">Scheduler</a>
-                            </li>
-                            <li>
-                              <a href="blank.html">Treatments</a>
-                            </li>
-                          </ul>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Scheduler" ng-class="{active: activeTab === 'scheduler'}">
+                            <a class="nav-link" ui-sref="scheduler">
+                                <i class="fa fa-fw fa-calendar"></i>
+                                <span class="nav-link-text">Scheduler</span></a>
+                            </a>
                         </li>
-                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Resources">
-                          <a class="nav-link" href="blank.html">
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Resources" ng-class="{active: activeTab === 'resources'}">
+                          <a class="nav-link" ui-sref="resources">
                             <i class="fa fa-fw fa-book"></i>
                             <span class="nav-link-text">Resources</span>
                           </a>
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-                          <a class="nav-link" href="blank.html">
+                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMessages" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-envelope"></i>
                             <span class="nav-link-text">Messages</span>
                           </a>
+                          <ul class="sidenav-second-level collapse" id="collapseMessages">
+                            <li ng-class="{active: activeTab === 'inbox'}">
+                              <a ui-sref="inbox">Inbox</a>
+                            </li>
+                            <li ng-class="{active: activeTab === 'alerts'}">
+                              <a ui-sref="alerts">Alerts</a>
+                            </li>
+                          </ul>
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Community">
                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCommunity" data-parent="#exampleAccordion">
@@ -64,14 +68,11 @@
                             <span class="nav-link-text">Community</span>
                           </a>
                           <ul class="sidenav-second-level collapse" id="collapseCommunity">
-                            <li>
-                              <a href="blank.html">Forum</a>
+                            <li ng-class="{active: activeTab === 'forum'}">
+                              <a ui-sref="forum">Forum</a>
                             </li>
-                            <li>
-                              <a href="blank.html">Events</a>
-                            </li>
-                            <li>
-                              <a href="blank.html">Near Me</a>
+                            <li ng-class="{active: activeTab === 'events'}">
+                              <a ui-sref="events">Events</a>
                             </li>
                           </ul>
                         </li>
@@ -81,25 +82,19 @@
                             <span class="nav-link-text">Profile</span>
                           </a>
                           <ul class="sidenav-second-level collapse" id="collapseProfile">
-                            <li>
-                              <a ng-class="{active: activeTab === 'account'}" ui-sref="account">Personal Profile</a>
+                            <li ng-class="{active: activeTab === 'account'}">
+                              <a ui-sref="account">Personal Profile</a>
                             </li>
-                            <li>
-                              <a href="blank.html">Medical Profile</a>
+                            <li ng-class="{active: activeTab === 'medical_profile'}">
+                              <a ui-sref="medical_profile">Medical Profile</a>
                             </li>
-                            <li>
-                              <a href="blank.html">Support Team</a>
+                            <li ng-class="{active: activeTab === 'support_team'}">
+                              <a ui-sref="support_team">Support Team</a>
                             </li>
                           </ul>
                         </li>
-                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="About">
-                            <a class="nav-link" href="blank.html">
-                                <i class="fa fa-fw fa-info-circle"></i>
-                                <span class="nav-link-text">About</span>
-                            </a>
-                        </li>
-                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Support">
-                            <a class="nav-link" href="blank.html">
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Support" ng-class="{active: activeTab === 'support'}">
+                            <a class="nav-link" ui-sref="support">
                                 <i class="fa fa-fw fa-headphones"></i>
                                 <span class="nav-link-text">Support</span>
                             </a>
@@ -132,7 +127,7 @@
                               <div class="dropdown-message small">Hey there! Welcome to our new Cancer Care App!</div>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item small" href="#">View all messages</a>
+                            <a class="dropdown-item small" ui-sref="inbox">View all messages</a>
                           </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -157,7 +152,7 @@
                               <div class="dropdown-message small">This is a reminder that you have upcoming events near your area.</div>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item small" href="#">View all alerts</a>
+                            <a class="dropdown-item small" ui-sref="alerts">View all alerts</a>
                           </div>
                         </li>
                         <li class="nav-item">
@@ -212,11 +207,11 @@
 
 
         <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/popper/popper.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
         <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <!-- Page level plugin JavaScript-->
         <!-- Custom scripts for all pages-->
         <script src="js/sb-admin.min.js"></script>
@@ -234,5 +229,19 @@
         <script src="app-services/flash.service.js"></script>
         <script src="home/index.controller.js"></script>
         <script src="account/index.controller.js"></script>
+        <script src="resources/index.controller.js"></script>
+        <script src="scheduler/index.controller.js"></script>
+        <script src="alerts/index.controller.js"></script>
+        <script src="inbox/index.controller.js"></script>
+        <script src="message_read/index.controller.js"></script>
+        <script src="compose_message/index.controller.js"></script>
+        <script src="alert_read/index.controller.js"></script>
+        <script src="forum/index.controller.js"></script>
+        <script src="events/index.controller.js"></script>
+        <script src="medical_profile/index.controller.js"></script>
+        <script src="support_team/index.controller.js"></script>
+        <script src="support/index.controller.js"></script>
+        <script src="forum_detail/index.controller.js"></script>
+        <script src="js/scheduler.js"></script>
     </body>
 </html>

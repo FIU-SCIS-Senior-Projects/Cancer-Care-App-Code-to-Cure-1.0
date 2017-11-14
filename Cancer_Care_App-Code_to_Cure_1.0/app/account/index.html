@@ -1,133 +1,127 @@
-﻿<div class="content-wrapper">
+﻿<style type="text/css">
+  /* CSS used here will be applied after bootstrap.css */
+  .pagetitle {
+    border-bottom:1px 
+    solid #cccccc; 
+    padding-bottom:30px; 
+    margin-bottom:30px;
+  }
+</style>
+
+<div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Home</a>
+              <a ui-sref="home">Home</a>
             </li>
-            <li class="breadcrumb-item active">My Account</li>
+            <li class="breadcrumb-item active">Profile</li>
         </ol>
-        <div class="row">
-            <div class="col-12">
-                <div class="container bootstrap snippets">
-                <div class="row">
-                  <div class="col-xs-12 col-sm-9">
-                    <form class="form-horizontal" method="post">
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                        <h4 class="panel-title">User info</h4>
-                        </div>
-                        <div class="panel-body">
-                  
-                          <div class="form-group">
-                              <label class="col-sm-2 control-label" for="firstName">First name</label>
-                              <div class="col-sm-10">
-                                  <input type="text" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-2 control-label" for="lastName">Last name</label>
-                              <div class="col-sm-10">
-                                  <input type="text" id="lastName" class="form-control" ng-model="vm.user.lastName" required />
-                              </div>
-                          </div>
-                          <div class="form-group">
-          
-                            <label for="username">Username</label>
-                            <div class="col-sm-10">
-                              <input type="text" id="username" class="form-control" ng-model="vm.user.username" required />
-                            </div>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-2 control-label" for="gender">Gender</label>
-                              <div class="col-sm-10">
-                                  <input type="radio" name="gender" id="gender" value="male" ng-model="vm.user.gender" checked> Male  
-                                  <input type="radio" name="gender" id="gender" value="female" ng-model="vm.user.gender"> Female
-                                  <input type="radio" name="gender" id="gender" value="other" ng-model="vm.user.gender"> Other
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-2 control-label" for="dateOfBirth">Date of birth</label>
-                              <div class="col-sm-10">
-                                  <input type="date" name="dateOfBirth" id="dateOfBirth" ng-model="vm.user.dateOfBirth" >
-                              </div>
-                          </div>
-                        </div>
-                      </div>
 
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                        <h4 class="panel-title">Contact info</h4>
-                        </div>
-                        <div class="panel-body">
-                          <div class="form-group">
-                            <label class="col-sm-2 control-label" for="phoneNumber">Phone number</label>
-                            <div class="col-sm-10">
-                              <input type="tel" id="phoneNumber" class="form-control" ng-model="vm.user.phoneNumber">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-2 control-label" for="email">E-mail address</label>
-                            <div class="col-sm-10">
-                              <input type="email" class="form-control" id="email" ng-model="vm.user.email">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-2 control-label" for="homeAddress">Home address</label>
-                            <div class="col-sm-10">
-                              <textarea rows="3" class="form-control" id="homeAddress" ng-model="vm.user.homeAddress"></textarea>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+        <div class="row-fluid top30 pagetitle">
+          <div class="container">  
+            <div class="row">
+              <div class="col-md-12"><h1>Profile</h1></div>
+            </div>
+          </div>
+        </div>
 
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                        <h4 class="panel-title">Security</h4>
-                        </div>
-                        <div class="panel-body">
-                          <div class="form-group">
-                              <label class="col-sm-2 control-label" for="password">Password</label>
-                              <div class="col-sm-10">
-                                <input type="password" id="password" class="form-control" ng-model="vm.user.password" value="vm.user.password"/>
-                              </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2">
-                              <button class="btn btn-primary" ng-click="vm.saveUser()">Submit</button>
-                              <button type="reset" class="btn btn-default">Cancel</button>
-                              <button class="btn btn-danger" ng-click="vm.deleteUser()">Delete</button>
-                              <div class="flash-message" ng-if="flash">
-                                <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+        <div class="container">
+    <div class="row my-2">
+        <div class="col-lg-8 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a ui-sref="account" data-target="#personal" data-toggle="tab" class="nav-link active">Personal</a>
+                </li>
+                <li class="nav-item">
+                    <a ui-sref="medical_profile" data-target="#medical" data-toggle="tab" class="nav-link">Medical</a>
+                </li>
+                <li class="nav-item">
+                    <a ui-sref="support_team" data-target="#team" data-toggle="tab" class="nav-link">Support Team</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <div class="tab-pane active" id="personal">
+                    <form role="form">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label" for="firstName">First name</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" id="firstName" ng-model="vm.user.firstName" required>
                             </div>
-                            </div>
-                          </div>
                         </div>
-                      </div>
-
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label" for="lastName">Last name</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" id="lastName" ng-model="vm.user.lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="email">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" placeholder="Street">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" placeholder="City">
+                            </div>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" placeholder="State">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label" for="username">Username</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" id="username" ng-model="vm.user.username" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label" for="password">Password</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" id="password" ng-model="vm.user.password">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-9">
+                                <input type="reset" class="btn btn-secondary" value="Cancel">
+                                <input type="button" class="btn btn-primary" ng-click="vm.saveUser()" value="Save Changes">
+                                <div class="flash-message" ng-if="flash">
+                                  <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
-
-                  </div>
-                  <div class="col-xs-12 col-sm-3">
-                    
-                    <div class="profile__contact-info">
-                      <div class="profile__contact-info-item">
-                        <div class="profile__contact-info-icon">
-                          <i class="fa fa-comment"></i>
-                        </div>
-                        <div class="profile__contact-info-body">
-                          <h5 class="profile__contact-info-heading">
-                            Quick tip
-                          </h5>
-                          This form contains some of the common profile fields you are encouraged to edit to suit your needs.
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
                 </div>
             </div>
         </div>
+        <div class="col-lg-4 order-lg-1 text-center">
+            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+            <h6 class="mt-2">Upload a different photo</h6>
+            <label class="custom-file">
+                <input type="file" id="file" class="custom-file-input">
+                <span class="custom-file-control">Choose file</span>
+            </label>
+        </div>
+    </div>
+</div>
+
+
+
+
+
     </div>
 </div>

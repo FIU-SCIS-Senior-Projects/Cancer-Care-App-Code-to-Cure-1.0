@@ -1,0 +1,90 @@
+﻿<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+              <a ui-sref="home">Home</a>
+          </li>
+          <li class="breadcrumb-item active">Alerts</li>
+        </ol>
+        
+
+        <div class="row-fluid top30 pagetitle">
+          <div class="container">  
+            <div class="row">
+              <div class="col-md-12"><h1>Alerts</h1></div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-xl-9 col-lg-8">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="btn-toolbar m-t-20" role="toolbar">
+                            <div class="btn-group">
+                                <a class="btn btn-primary waves-effect waves-light" ui-sref="inbox" role="button"><i class="fa fa-inbox"></i></button>
+                                <a class="btn btn-primary waves-effect waves-light active" ui-sref="alerts" role="button"><i class="fa fa-exclamation-circle"></i></a>
+                            </div>
+                            <div class="btn-group ml-1">
+                                <button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa fa-trash-o"></i></button> 
+                            </div>
+                            <div class="btn-group ml-1">
+                                <a class="btn btn-primary waves-effect waves-light" ui-sref="compose_message" role="button"><i class="fa fa-pencil-square-o"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End row -->
+
+                <div class="card-box p-1 m-t-20">
+                    <div class="panel-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mails m-0">
+                                <tbody>
+                                  <tr class="read">
+                                      <td class="mail-select">
+                                          <div class="checkbox checkbox-primary m-r-15">
+                                              <input id="checkbox1" type="checkbox">
+                                              <label for="checkbox1"></label>
+                                          </div>
+                                      </td>
+                                      <td>
+                                          <a ui-sref="alert_read" class="email-name">Events</a>
+                                      </td>
+                                      <td class="hidden-xs">
+                                          <a ui-sref="alert_read" class="email-msg">Reminder</a>
+                                      </td>
+                                      <td class="text-right">
+                                          12:00 AM
+                                      </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div> <!-- panel body -->
+                </div> <!-- panel -->
+
+                <div class="row">
+                    <div class="col-7">
+                        Showing 1 - 2 of 2
+                    </div>
+                    <div class="col-5">
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-sm btn-default waves-effect"><i class="fa fa-chevron-left"></i></button>
+                            <button type="button" class="btn btn-sm btn-default waves-effect"><i class="fa fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- end Col-9 -->
+
+          </div><!-- End row -->
+
+        </div>
+
+    </div>
+</div>
