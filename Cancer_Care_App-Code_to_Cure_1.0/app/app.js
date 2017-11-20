@@ -93,6 +93,14 @@
                 controllerAs: 'vm',
                 data: { activeTab: 'forum' }
             })
+            .state('forum_detail', 
+            {
+                url: '/forum_detail/:_id',
+                templateUrl: 'forum_detail/index.html',
+                controller: 'Forum_detail.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'forum_detail' }
+            })
             .state('events', 
             {
                 url: '/events',
@@ -100,6 +108,14 @@
                 controller: 'Events.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'events' }
+            })
+            .state('event_detail', 
+            {
+                url: '/event_detail/:_id',
+                templateUrl: 'event_detail/index.html',
+                controller: 'Event_detail.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'event_detail' }
             })
             .state('medical_profile', 
             {
@@ -124,15 +140,7 @@
                 controller: 'Support.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'support' }
-            })
-            .state('forum_detail', {
-                url: '/forum_detail',
-                templateUrl: 'forum_detail/index.html',
-                controller: 'Forum_detail.IndexController',
-                controllerAs: 'vm',
-                data: { activeTab: 'forum_detail' }
             });
-
     }
 
     function run($http, $rootScope, $window) 

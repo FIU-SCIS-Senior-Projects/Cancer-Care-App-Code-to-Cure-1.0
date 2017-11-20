@@ -12,7 +12,6 @@
           <!-- Custom styles for this template-->
           <link href="css/sb-admin.css" rel="stylesheet">
           <link rel="stylesheet" type="text/css" href="/app/css/inbox.css"/>
-          <link rel="stylesheet" type="text/css" href="/app/css/events.css"/>
           <script src="https://use.fontawesome.com/7d636087c5.js"></script>
 
 
@@ -89,7 +88,7 @@
                               <a ui-sref="medical_profile">Medical Profile</a>
                             </li>
                             <li ng-class="{active: activeTab === 'support_team'}">
-                              <a ui-sref="support_team">Support Team</a>
+                              <a ui-sref="support_team">My Team</a>
                             </li>
                           </ul>
                         </li>
@@ -226,6 +225,8 @@
         <!-- application scripts -->
         <script src="app.js"></script>
         <script src="app-services/user.service.js"></script>
+        <script src="app-services/post.service.js"></script>
+        <script src="app-services/event.service.js"></script>
         <script src="app-services/flash.service.js"></script>
         <script src="home/index.controller.js"></script>
         <script src="account/index.controller.js"></script>
@@ -238,6 +239,7 @@
         <script src="alert_read/index.controller.js"></script>
         <script src="forum/index.controller.js"></script>
         <script src="events/index.controller.js"></script>
+        <script src="event_detail/index.controller.js"></script>
         <script src="medical_profile/index.controller.js"></script>
         <script src="support_team/index.controller.js"></script>
         <script src="support/index.controller.js"></script>

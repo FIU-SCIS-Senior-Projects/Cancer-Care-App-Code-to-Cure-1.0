@@ -20,21 +20,6 @@
   }
 </style>
 
-<script type="text/javascript">
-  function dynInput(cbox) {
-  if (cbox.checked) {
-    var input = document.createElement("input");
-    input.type = "text";
-    var div = document.createElement("div");
-    div.id = cbox.name;
-    div.appendChild(input);
-    document.getElementById("insertinputs").appendChild(div);
-  } else {
-    document.getElementById(cbox.name).remove();
-  }
-}
-</script>
-
 <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -64,7 +49,7 @@
                     <a ui-sref="medical_profile" data-target="#medical" data-toggle="tab" class="nav-link active">Medical</a>
                 </li>
                 <li class="nav-item">
-                    <a ui-sref="support_team" data-target="#team" data-toggle="tab" class="nav-link">Support Team</a>
+                    <a ui-sref="support_team" data-target="#team" data-toggle="tab" class="nav-link">My Team</a>
                 </li>
             </ul>
             <div class="tab-content py-4">
@@ -73,14 +58,14 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label" for="cancerType">Cancer type</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" id="cancerType" ng-model="vm.user.cancerType" required>
+                                <input class="form-control" type="text" id="cancerType" ng-model="vm.user.cancerType">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label" for="stage">Stage</label>
                             <div class="col-lg-9">
-                                <select class="form-control" name="Select Stage">
-                                  <option selected disabled value=''>Select stage</option>
+                                <select class="form-control" name="stage" id="stage" ng-model="vm.user.stage">
+                                  <option disabled value="">Select stage</option>
                                   <option value="one">I</option>
                                   <option value="two">II</option>
                                   <option value="three">III</option>
@@ -89,21 +74,36 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label" for="Metastasis">Metastasis</label>
+                            <label class="col-lg-3 col-form-label form-control-label" for="metastasis">Metastasis <br>(Select all that apply)</label>
                             
                               <ul class="checkbox-grid col-lg-9">
-    <li><input type="checkbox" name="Bone" value="Bone" /><label for="Bone">Bone</label></li>
-    <li><input type="checkbox" name="Bowel" value="Bowel" /><label for="Bowel">Bowel</label></li>
-    <li><input type="checkbox" name="Brain" value="Brain" /><label for="Brain">Brain</label></li>
-    <li><input type="checkbox" name="Intestines" value="Intestines" /><label for="Intestines">Intestines</label></li>
-    <li><input type="checkbox" name="Liver" value="Liver" /><label for="Liver">Liver</label></li>
-    <li><input type="checkbox" name="Lungs" value="Lungs" /><label for="Lungs">Lungs</label></li>
-    <li><input type="checkbox" name="LymphNodes" value="LymphNodes" /><label for="LymphNodes">Lymph Nodes</label></li>
-    <li><input type="checkbox" name="Skin" value="Skin" /><label for="Skin">Skin</label></li>
-    <li><input type="checkbox" name="None" value="None" /><label for="None">None</label></li>
-    <li><input type="checkbox" name="Other" value="Other" onclick="dynInput(this);"/><label for="Other">Other</label> <p id="insertinputs"></p></li>
-</ul>
+                                <li><input type="checkbox" ng-model="vm.user.metastasis.bone" name="bone" value="bone" /><label for="bone">Bone</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.metastasis.bowel" name="bowel" value="bowel" /><label for="bowel">Bowel</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.metastasis.brain" name="brain" value="brain" /><label for="brain">Brain</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.metastasis.intestines" name="intestines" value="intestines" /><label for="intestines">Intestines</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.metastasis.liver" name="liver" value="liver" /><label for="liver">Liver</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.metastasis.lungs" name="lungs" value="lungs" /><label for="lungs">Lungs</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.metastasis.lymphNodes" name="lymphNodes" value="lymphNodes" /><label for="lymphNodes">Lymph Nodes</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.metastasis.skin" name="skin" value="skin" /><label for="skin">Skin</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.metastasis.none" name="none" value="none" /><label for="none">None</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.metastasis.other" name="other" value="other" /><label for="other">Other</label></li>
+                            </ul>   
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label" for="treatment">Types of Treatment <br>(Select all that apply)</label>
                             
+                              <ul class="checkbox-grid col-lg-9">
+                                <li><input type="checkbox" ng-model="vm.user.treatment.chemotherapy" name="chemotherapy" value="chemotherapy" /><label for="chemotherapy">Chemotherapy</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.treatment.hormoneTherapy" name="hormoneTherapy" value="hormoneTherapy" /><label for="hormoneTherapy">Hormone Therapy</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.treatment.immunotherapy" name="immunotherapy" value="immunotherapy" /><label for="immunotherapy">Immunotherapy</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.treatment.precisionMedicine" name="precisionMedicine" value="precisionMedicine" /><label for="precisionMedicine">Precision Medicine</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.treatment.radiationTherapy" name="radiationTherapy" value="radiationTherapy" /><label for="radiationTherapy">Radiation Therapy</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.treatment.stemCellTransplant" name="stemCellTransplant" value="stemCellTransplant" /><label for="stemCellTransplant">Stem Cell Transplant</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.treatment.surgery" name="surgery" value="surgery" /><label for="surgery">Surgery</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.treatment.targetedTherapy" name="targetedTherapy" value="targetedTherapy" /><label for="targetedTherapy">Targeted Therapy</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.treatment.none" name="none" value="none" /><label for="none">None</label></li>
+                                <li><input type="checkbox" ng-model="vm.user.treatment.other" name="other" value="other" /><label for="other">Other</label></li>
+                            </ul>   
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label"></label>
@@ -120,13 +120,9 @@
             </div>
         </div>
         <div class="col-lg-4 order-lg-1 text-center">
-            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-            <h6 class="mt-2">Upload a different photo</h6>
-            <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
-            </label>
-        </div>
+                    <img src="/app/app-content/profile.jpg" class="rounded-circle" alt="avatar">
+                    <h6 class="mt-2">Patient Profile</h6>
+                </div>
     </div>
 </div>
 

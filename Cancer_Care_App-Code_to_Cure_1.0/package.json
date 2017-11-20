@@ -1,10 +1,10 @@
 {
-    "name": "mean-stack-registration-login-example",
+    "name": "cancer-care-app",
     "version": "1.0.0",
-    "description": "MEAN Stack User Registration and Login Example Application",
+    "description": "Cancer-Care-App",
     "repository": {
         "type": "git",
-        "url": "https://github.com/cornflourblue/mean-stack-registration-login-example.git"
+        "url": "https://github.com/FIU-SCIS-Senior-Projects/Cancer-Care-App-Code-to-Cure-1.0"
     },
     "dependencies": {
         "bcryptjs": "^2.1.0",

@@ -11,6 +11,7 @@ var service = {};
 
 service.authenticate = authenticate;
 service.getById = getById;
+service.getAll = getAll;
 service.create = create;
 service.update = update;
 service.delete = _delete;
@@ -44,6 +45,23 @@ function getById(_id) {
         if (user) {
             // return user (without hashed password)
             deferred.resolve(_.omit(user, 'hash'));
+        } else {
+            // user not found
+            deferred.resolve();
+        }
+    });
+
+    return deferred.promise;
+}
+
+function getAll() {
+    var deferred = Q.defer();
+
+    db.users.find().toArray(function(err, userArray) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+        if (userArray) {
+            // return user (without hashed password)
+            deferred.resolve(userArray);
         } else {
             // user not found
             deferred.resolve();
@@ -121,12 +139,33 @@ function update(_id, userParam) {
             firstName: userParam.firstName,
             lastName: userParam.lastName,
             username: userParam.username,
-            gender: userParam.gender,
-            dateOfBirth: userParam.dateOfBirth,
-            phoneNumber: userParam.phoneNumber,
             email: userParam.email,
-            homeAddress: userParam.homeAddress,
-
+            "address.street": userParam.address.street,
+            "address.city": userParam.address.city,
+            "address.state": userParam.address.state,
+            "address.zipcode": userParam.address.zipcode,
+            cancerType: userParam.cancerType,
+            stage: userParam.stage,
+            "metastasis.bone": userParam.metastasis.bone,
+            "metastasis.bowel": userParam.metastasis.bowel,
+            "metastasis.brain": userParam.metastasis.brain,
+            "metastasis.intestines": userParam.metastasis.intestines,
+            "metastasis.liver": userParam.metastasis.liver,
+            "metastasis.lungs": userParam.metastasis.lungs,
+            "metastasis.lymphNodes": userParam.metastasis.lymphNodes,
+            "metastasis.skin": userParam.metastasis.skin,
+            "metastasis.none": userParam.metastasis.none,
+            "metastasis.other": userParam.metastasis.other,
+            "treatment.chemotherapy": userParam.treatment.chemotherapy,
+            "treatment.hormoneTherapy": userParam.treatment.hormoneTherapy,
+            "treatment.immunotherapy": userParam.treatment.immunotherapy,
+            "treatment.precisionMedicine": userParam.treatment.precisionMedicine,
+            "treatment.radiationTherapy": userParam.treatment.radiationTherapy,
+            "treatment.stemCellTransplant": userParam.treatment.stemCellTransplant,
+            "treatment.surgery": userParam.treatment.surgery,
+            "treatment.targetedTherapy": userParam.treatment.targetedTherapy,
+            "treatment.none": userParam.treatment.none,
+            "treatment.other": userParam.treatment.other
         };
 
         // update password if it was entered

@@ -4,15 +4,15 @@
 
     angular
         .module('app')
-        .controller('Forum_detail.IndexController', Controller);
+        .controller('Event_detail.IndexController', Controller);
 
-    function Controller($stateParams, $window, UserService, PostService, FlashService) 
+    function Controller($stateParams, $window, UserService, EventService, FlashService) 
     {
         var vm = this;
 
-        vm.post = {};
+        vm.event = {};
         vm.user = null;
-        vm.createComment = createComment;
+        vm.joinEvent = joinEvent;
 
         initController();
 
@@ -25,20 +25,20 @@
                 vm.user = user;
             });
 
-            // get post
+            // get event
             if ($stateParams._id) {
-                PostService.GetById($stateParams._id)
-                    .then(function (post) {
-                        vm.post = post;
+                EventService.GetById($stateParams._id)
+                    .then(function (event) {
+                        vm.event = event;
                     });
             }
         }
 
-        function createComment() {
-            var indata = {postData: vm.post, userData: vm.user};
-            PostService.Update(indata)
+        function joinEvent() {
+            var indata = {eventData: vm.event, userData: vm.user};
+            EventService.Update(indata)
                 .then(function () {
-                    $window.location.reload();
+                    FlashService.Success("Joined Event");
                 })
                 .catch(function (error) {
                     FlashService.Error(error);

@@ -30,7 +30,13 @@
         </div>
 
 
-<div class="content">
+        <div class="content">
+            <div class="col-lg-1">
+                <button class="btn btn-primary" ui-sref="forum">
+                    <i class="fa fa-arrow-left"></i> 
+                    Back to forums
+                </button>
+            </div>
         <!-- begin container -->
         <div class="container">
             <!-- begin row -->
@@ -39,53 +45,52 @@
                 <div class="col-md-9">
 
                     <br>
-                    <!-- end pagination -->
                     
                     <!-- begin forum-list -->
                     <ul class="forum-list forum-detail-list">
                         <li>
                             <!-- begin media -->
+                            <h1><small>{{ vm.post.title }}</small></h1>
+                            <hr>
+                            <br>
                             <div class="media">
-                                <img src="http://demos.themes.guide/bodeo/assets/images/users/m101.jpg" alt="Mike Anamendolla" alt="">
+                                <img src="/app/app-content/profile2.jpg" alt="Mike Anamendolla" alt="">
                             </div>
                             <!-- end media -->
                             <!-- begin info-container -->
                             <div class="info-container">
-                                <div class="post-user"><a href="#">Mike Anamendolla</a> <small>SAYS</small></div>
+                                <div class="post-user"><strong>{{ vm.post.author }}</strong> <small>posted:</small></div>
                                 <div class="post-content">
-                                    Hello. This is my first post.
+                                    {{ vm.post.body }}
                                 </div>
-                                <div class="post-time">4 hours ago</div>
                             </div>
                             <!-- end info-container -->
                         </li>
-                        <li>
+                        <li ng-repeat="comment in vm.post.comments">
                             <!-- begin media -->
                             <div class="media">
-                                <img src="http://demos.themes.guide/bodeo/assets/images/users/m105.jpg" alt="">
+                                <img src="/app/app-content/profile2.jpg" alt="Mike Anamendolla" alt="">
                             </div>
                             <!-- end media -->
                             <!-- begin info-container -->
                             <div class="info-container">
-                                <div class="post-user"><a href="#">Seth Frazier</a> <small>SAYS</small></div>
+                                <div class="post-user"><strong>{{ comment.author }}</strong> <small>replied:</small></div>
                                 <div class="post-content">
-                                    Hey Mike. How's it going?
+                                    {{ comment.body }}
                                 </div>
-                                <div class="post-time">5 hours ago</div>
                             </div>
                             <!-- end info-container -->
                         </li>
                     </ul>
                     <!-- end forum-list -->
                     <div class="panel panel-forum">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">Comment</h4>
-                        </div>
                         <div class="panel-body">
-                            <form action="/" name="wysihtml5" method="POST">
-                                <textarea class="textarea form-control" id="wysihtml5" placeholder="Enter text ..." rows="12"></textarea>
+                            <form role="form">
+                                <div class="form-group">
+                                    <textarea class="form-control" type="text" id="body" ng-model="vm.post.comment" placeholder="Add a comment..." style ="height: 130px;"></textarea>
+                                </div>
                                 <div class="m-t-10">
-                                    <button type="submit" class="btn btn-theme">Post Comment <i class="fa fa-paper-plane"></i></button>
+                                    <button type="submit" class="btn btn-theme" ng-click="vm.createComment()">Comment <i class="fa fa-paper-plane"></i></button>
                                 </div>
                             </form>
                         </div>

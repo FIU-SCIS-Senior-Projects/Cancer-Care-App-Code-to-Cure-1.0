@@ -46,27 +46,23 @@
                     <div class="panel panel-forum">
                         <!-- begin forum-list -->
                         <ul class="forum-list forum-topic-list">
-                            <li>
+                            <li ng-repeat="post in vm.posts">
                                 <!-- begin media -->
                                 <div class="media">
-                                    <img src="http://demos.themes.guide/bodeo/assets/images/users/m101.jpg" alt="Mike Anamendolla" alt="">
+                                    <img src="/app/app-content/profile2.jpg" alt="Mike Anamendolla">
                                 </div>
                                 <!-- end media -->
                                 <!-- begin info-container -->
                                 <div class="info-container">
                                     <div class="info">
-                                        <h4 class="title"><a ui-sref="forum_detail">Let's share our stories.</a></h4>
+                                        <h5 class="title"><a href="#/forum_detail/{{post._id}}">{{post.title}}</a></h5>
                                         <ul class="info-start-end">
-                                            <li>post by <a ui-sref="forum_detail">Ira Scott</a></li>
-                                            <li>latest reply <a ui-sref="forum_detail">Maximiliano Coburn</a></li>
+                                            <li>post by <strong>{{post.author}}</strong></li>
                                         </ul>
                                     </div>
                                     <div class="date-replies">
-                                        <div class="time">
-                                            8 hours ago
-                                        </div>
                                         <div class="replies">
-                                            <div class="total">1</div>
+                                            <div class="total">{{post.replies}}</div>
                                             <div class="text">REPLIES</div>
                                         </div>
                                     </div>
@@ -82,6 +78,7 @@
                         Create Post
                     </button>
                     <br>
+                    <hr>
                     <!-- Logout Modal-->
                     <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -95,14 +92,14 @@
                                 <div class = "modal-body">
                                     <form role="form">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Title">
+                                            <input type="text" class="form-control" placeholder="Title" id="title" ng-model="vm.post.title">
                                         </div>
                                         <div class="form-group">
-                                            <textarea class="form-control" type="text" placeholder="Body" style ="height: 200px;"></textarea>
+                                            <textarea class="form-control" type="text" id="body" ng-model="vm.post.body" placeholder="Body" style ="height: 200px;"></textarea>
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-primary">Post</button>
+                                            <button type="submit" class="btn btn-primary" ng-click="vm.savePost()">Post</button>
                                         </div>
                                     </form>
                                 </div>

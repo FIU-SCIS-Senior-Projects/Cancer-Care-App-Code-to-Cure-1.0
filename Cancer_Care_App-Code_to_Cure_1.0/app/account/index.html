@@ -27,97 +27,96 @@
         </div>
 
         <div class="container">
-    <div class="row my-2">
-        <div class="col-lg-8 order-lg-2">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a ui-sref="account" data-target="#personal" data-toggle="tab" class="nav-link active">Personal</a>
-                </li>
-                <li class="nav-item">
-                    <a ui-sref="medical_profile" data-target="#medical" data-toggle="tab" class="nav-link">Medical</a>
-                </li>
-                <li class="nav-item">
-                    <a ui-sref="support_team" data-target="#team" data-toggle="tab" class="nav-link">Support Team</a>
-                </li>
-            </ul>
-            <div class="tab-content py-4">
-                <div class="tab-pane active" id="personal">
-                    <form role="form">
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label" for="firstName">First name</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" id="firstName" ng-model="vm.user.firstName" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label" for="lastName">Last name</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" id="lastName" ng-model="vm.user.lastName" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="email">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" placeholder="Street">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label"></label>
-                            <div class="col-lg-6">
-                                <input class="form-control" type="text" placeholder="City">
-                            </div>
-                            <div class="col-lg-3">
-                                <input class="form-control" type="text" placeholder="State">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label" for="username">Username</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" id="username" ng-model="vm.user.username" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label" for="password">Password</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" id="password" ng-model="vm.user.password">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="password">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label"></label>
-                            <div class="col-lg-9">
-                                <input type="reset" class="btn btn-secondary" value="Cancel">
-                                <input type="button" class="btn btn-primary" ng-click="vm.saveUser()" value="Save Changes">
-                                <div class="flash-message" ng-if="flash">
-                                  <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+            <div class="row my-2">
+                <div class="col-lg-8 order-lg-2">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a ui-sref="account" data-target="#personal" data-toggle="tab" class="nav-link active">Personal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a ui-sref="medical_profile" data-target="#medical" data-toggle="tab" class="nav-link">Medical</a>
+                        </li>
+                        <li class="nav-item">
+                            <a ui-sref="support_team" data-target="#team" data-toggle="tab" class="nav-link">My Team</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content py-4">
+                        <div class="tab-pane active" id="personal">
+                            <form role="form">
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label" for="firstName">First name</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" id="firstName" ng-model="vm.user.firstName">
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label" for="lastName">Last name</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" id="lastName" ng-model="vm.user.lastName">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label" for="email">Email</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="email" id="email" ng-model="vm.user.email">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" id="street" ng-model="vm.user.address.street" placeholder="Street">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-4">
+                                        <input class="form-control" type="text" id="city" ng-model="vm.user.address.city" placeholder="City">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <input class="form-control" type="text" id="state" ng-model="vm.user.address.state" placeholder="state">
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <input class="form-control" type="text" id="zipcode" ng-model="vm.user.address.zipcode" placeholder="Zip Code">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label" for="username">Username</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" id="username" ng-model="vm.user.username" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label" for="password">Password</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" id="password" ng-model="vm.user.password">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="password">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <input type="reset" class="btn btn-secondary" value="Cancel">
+                                        <input type="button" class="btn btn-primary" ng-click="vm.saveUser()" value="Save Changes">
+                                        <div class="flash-message" ng-if="flash">
+                                          <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 order-lg-1 text-center">
+                    <img src="/app/app-content/profile.jpg" class="rounded-circle" alt="avatar">
+                    <h6 class="mt-2">Patient Profile</h6>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 order-lg-1 text-center">
-            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-            <h6 class="mt-2">Upload a different photo</h6>
-            <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
-            </label>
-        </div>
-    </div>
-</div>
 
 
 

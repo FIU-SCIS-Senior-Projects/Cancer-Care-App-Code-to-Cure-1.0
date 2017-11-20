@@ -1,0 +1,60 @@
+<style type="text/css">
+  /* CSS used here will be applied after bootstrap.css */
+  .pagetitle {
+    border-bottom:1px 
+    solid #cccccc; 
+    padding-bottom:30px; 
+    margin-bottom:30px;
+  }
+</style>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+              <a ui-sref="home">Home</a>
+          </li>
+          <li class="breadcrumb-item active">Events</li>
+        </ol>
+
+        
+        <div class="row-fluid top30 pagetitle">
+          <div class="container">  
+            <div class="row">
+              <div class="col-md-12"><h1>Events</h1></div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="content">
+            <div class="col-lg-1">
+                <button class="btn btn-primary" ui-sref="events">
+                    <i class="fa fa-arrow-left"></i> 
+                    Back to events
+                </button>
+            </div>
+
+            <div class="container">
+                <!-- begin row -->
+                <div class="row">
+                    <!-- begin col-9 -->
+                    <div class="col-md-9">
+                        <br>
+                        <h1><small>{{ vm.event.title }}</small></h1>
+                            <div class="text-muted">Organized by: {{vm.event.organizer}}</div>
+                        <hr>
+                        <p><strong>Description:</strong> {{ vm.event.description }}</p>
+                        <hr>
+                        <p><strong>Starts:</strong> {{ vm.event.startDate }} at {{ vm.event.startTime }}<br><strong>Ends:</strong> {{ vm.event.endDate }} at {{ vm.event.endTime }}<br><strong>Address:</strong> {{vm.event.address.street}} {{vm.event.address.city}}, {{vm.event.address.state}} {{vm.event.address.zipcode}}</p>
+
+                        <button class="btn btn-success" style="float: right;" ng-click="vm.joinEvent()" ui-sref="events">
+                        Join Event
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
