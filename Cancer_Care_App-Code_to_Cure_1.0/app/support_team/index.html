@@ -48,7 +48,7 @@
                             </button>
                             <br>
 
-                            <!-- Logout Modal-->
+                            <!-- Contact Modal-->
                             <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -61,47 +61,32 @@
                                         <div class = "modal-body">
                                             <form role="form">
                                                 <div class="form-group row">
-                                                    <label class="col-lg-3 col-form-label form-control-label" for="firstName">First name</label>
+                                                    <label class="col-lg-3 col-form-label form-control-label" for="contactName">Name</label>
                                                     <div class="col-lg-9">
-                                                        <input class="form-control" type="text" id="firstName">
+                                                        <input class="form-control" type="text" id="contactName" ng-model="vm.user.contact.contactName">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-lg-3 col-form-label form-control-label" for="lastName">Last name</label>
+                                                    <label class="col-lg-3 col-form-label form-control-label" for="contactEmail">Email</label>
                                                     <div class="col-lg-9">
-                                                        <input class="form-control" type="text" id="lastName">
+                                                        <input class="form-control" type="email" id="contactEmail" ng-model="vm.user.contact.contactEmail">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                                                    <label class="col-lg-3 col-form-label form-control-label" for="contactAddress">Address</label>
                                                     <div class="col-lg-9">
-                                                        <input class="form-control" type="email">
+                                                        <input class="form-control" type="text" placeholder="Street" id="contactAddress" ng-model="vm.user.contact.contactAddress">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                                                    <label class="col-lg-3 col-form-label form-control-label" for="contactPhone">Phone number</label>
                                                     <div class="col-lg-9">
-                                                        <input class="form-control" type="text" placeholder="Street">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-3 col-form-label form-control-label"></label>
-                                                    <div class="col-lg-6">
-                                                        <input class="form-control" type="text" placeholder="City">
-                                                    </div>
-                                                    <div class="col-lg-3">
-                                                        <input class="form-control" type="text" placeholder="State">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-3 col-form-label form-control-label" for="username">Mobile</label>
-                                                    <div class="col-lg-9">
-                                                        <input class="form-control" type="text" id="mobile">
+                                                        <input class="form-control" type="text" id="contactPhone" ng-model="vm.user.contact.contactPhone">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                    <button type="submit" class="btn btn-primary" ng-click="vm.addContact()">Add</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -112,84 +97,22 @@
                                 <div class="card card-default" id="card_contacts">
                                     <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
                                         <ul class="list-group pull-down" id="contact-list">
-                                            <li class="list-group-item">
+                                            <li class="list-group-item" ng-repeat="contact in vm.user.contacts">
                                                 <div class="row w-100">
                                                     <div class="col-12 col-sm-6 col-md-3 px-0">
-                                                        <img src="/app/app-content/profile2.jpg" alt="Mike Anamendolla" class="rounded-circle mx-auto d-block img-fluid">
+                                                        <img src="/app/app-content/profile2.jpg" alt="" class="rounded-circle mx-auto d-block img-fluid">
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-                                                        <label class="name lead">Mike Anamendolla</label>
+                                                        <label class="name lead">{{contact.contactName}}</label>
                                                         <br> 
-                                                        <span class="fa fa-map-marker fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="5842 Hillcrest Rd"></span>
-                                                        <span class="text-muted">5842 Hillcrest Rd</span>
+                                                        <span class="fa fa-map-marker fa-fw text-muted" data-toggle="tooltip"></span>
+                                                        <span class="text-muted">{{contact.contactAddress}}</span>
                                                         <br>
-                                                        <span class="fa fa-phone fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="(870) 288-4149"></span>
-                                                        <span class="text-muted small">(870) 288-4149</span>
+                                                        <span class="fa fa-phone fa-fw text-muted" data-toggle="tooltip"></span>
+                                                        <span class="text-muted small">{{contact.contactPhone}}</span>
                                                         <br>
-                                                        <a ui-sref="compose_message"><span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span></a>
-                                                        <span class="text-muted small text-truncate">mike.ana@example.com</span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <div class="row w-100">
-                                                    <div class="col-12 col-sm-6 col-md-3 px-0">
-                                                        <img src="/app/app-content/profile2.jpg" alt="Seth Frazier" class="img-fluid rounded-circle d-block mx-auto">
-                                                    </div>
-                                                    <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-                                                        <span class="name lead">Seth Frazier</span>
-                                                        <br>
-                                                        <span class="fa fa-map-marker fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="7396 E North St"></span>
-                                                        <span class="text-muted">7396 E North St</span>
-                                                        <br>
-                                                        <span class="fa fa-phone fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="(560) 180-4143"></span>
-                                                        <span class="text-muted small">(560) 180-4143</span>
-                                                        <br>
-                                                        <a ui-sref="compose_message"><span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="seth.frazier@example.com"></span></a>
-                                                        <span class="text-muted small text-truncate">seth.frazier@example.com</span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <div class="row w-100">
-                                                    <div class="col-12 col-sm-6 col-md-3 px-0">
-                                                        <img src="/app/app-content/profile2.jpg" alt="Rosemary Porter" class="img-fluid rounded-circle d-block mx-auto">
-                                                    </div>
-                                                    <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-                                                        <span class="name lead">Rosemary Porter</span>
-                                                        <br> <span class="fa fa-map-marker fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="5267 Cackson St"></span>
-                                                        <span class="text-muted">5267 Cackson St</span>
-                                                        <br>
-                                                        <span class="fa fa-phone fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="(497) 160-9776"></span>
-                                                        <span class="text-muted small">(497) 160-9776</span>
-                                                        <br>
-                                                        <a ui-sref="compose_message"><span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="rosemary.porter@example.com"></span></a>
-                                                        <span class="text-muted small text-truncate">rosemary.porter@example.com</span>
-                                                        <br>
-
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <div class="row w-100">
-                                                    <div class="col-12 col-sm-6 col-md-3 px-0">
-                                                        <img src="/app/app-content/profile2.jpg" alt="Debbie Schmidt" class="img-fluid rounded-circle d-block mx-auto">
-                                                    </div>
-                                                    <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-                                                        <label class="name lead">Debbie Schmidt</label>
-                                                        <br>
-
-                                                        <span class="fa fa-fw fa-map-marker fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="3903 W Alexander Rd"></span>
-                                                        <span class="text-muted">3903 W Alexander Rd</span>
-                                                        <br>
-
-                                                        <span class="fa fa-fw fa-phone fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="(867) 322-1852"></span>
-                                                        <span class="text-muted small">(867) 322-1852</span>
-                                                        <br>
-
-                                                        <a ui-sref="compose_message"><span class="fa fa-fw fa-envelope fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="debbie.schmidt@example.com"></span></a>
-                                                        <span class="text-muted small text-truncate">debbie.schmidt@example.com</span>
-
+                                                        <a ui-sref="compose_message"><span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip"></span></a>
+                                                        <span class="text-muted small text-truncate">{{contact.contactEmail}}</span>
                                                     </div>
                                                 </div>
                                             </li>

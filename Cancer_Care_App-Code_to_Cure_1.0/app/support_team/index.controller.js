@@ -6,11 +6,12 @@
         .module('app')
         .controller('Support_team.IndexController', Controller);
 
-    function Controller(UserService) 
+    function Controller(UserService, FlashService, $window) 
     {
         var vm = this;
 
         vm.user = null;
+        vm.addContact = addContact;
 
         initController();
 
@@ -21,6 +22,19 @@
             {
                 vm.user = user;
             });
+        }
+
+        function addContact() 
+        {
+            UserService.Update(vm.user)
+                .then(function () 
+                {
+                    $window.location.reload();
+                })
+                .catch(function (error) 
+                {
+                    FlashService.Error(error);
+                });
         }
     }
 

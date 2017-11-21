@@ -94,6 +94,10 @@ function create(userParam) {
 
         // add hashed password to user object
         user.hash = bcrypt.hashSync(userParam.password, 10);
+        user.contacts = [];
+        user.address = {};
+        user.metastasis = {};
+        user.treatment = {};
 
         db.users.insert(
             user,
@@ -173,9 +177,15 @@ function update(_id, userParam) {
             set.hash = bcrypt.hashSync(userParam.password, 10);
         }
 
+        var contactName = userParam.contact.contactName;
+        var contactAddress = userParam.contact.contactAddress;
+        var contactPhone = userParam.contact.contactPhone;
+        var contactEmail = userParam.contact.contactEmail;
+
         db.users.update(
             { _id: mongo.helper.toObjectID(_id) },
-            { $set: set },
+            { $set: set, $push: {contacts: {contactName: contactName, contactAddress: contactAddress, 
+                contactPhone: contactPhone, contactEmail: contactEmail}} },
             function (err, doc) {
                 if (err) deferred.reject(err.name + ': ' + err.message);
 
