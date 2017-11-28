@@ -33,7 +33,7 @@
             {
                 url: '/resources',
                 templateUrl: 'resources/index.html',
-                controller: 'Resources.IndexController',
+                controller: 'Resource.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'resources' }
             })
@@ -140,6 +140,38 @@
                 controller: 'Support.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'support' }
+            })
+            .state('admin_users', 
+            {
+                url: '/admin/users',
+                templateUrl: 'admin/users/index.html',
+                controller: 'Admin_users.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'admin_users' }
+            })
+            .state('admin_forum', 
+            {
+                url: '/admin/forum',
+                templateUrl: 'admin/forum/index.html',
+                controller: 'Admin_forum.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'admin_forum' }
+            })
+            .state('admin_events', 
+            {
+                url: '/admin/events',
+                templateUrl: 'admin/events/index.html',
+                controller: 'Admin_events.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'admin_events' }
+            })
+            .state('admin_resources', 
+            {
+                url: '/admin/resources',
+                templateUrl: 'admin/resources/index.html',
+                controller: 'Admin_resources.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'admin_resources' }
             });
     }
 

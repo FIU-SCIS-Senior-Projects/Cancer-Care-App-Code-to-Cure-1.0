@@ -9,6 +9,7 @@ router.get('/', getAllPosts);
 router.get('/:_id', getById);
 router.post('/', create);
 router.put('/:_id', update);
+router.delete('/:_id', deletePost);
 
 module.exports = router;
 
@@ -48,6 +49,17 @@ function create(req, res) {
 
 function update(req, res) {
     postService.update(req.body)
+        .then(function () {
+            res.sendStatus(200);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function deletePost(req, res) {
+
+    postService.delete(req.params._id)
         .then(function () {
             res.sendStatus(200);
         })

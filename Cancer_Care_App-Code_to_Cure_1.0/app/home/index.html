@@ -85,6 +85,9 @@
     <div class="container-fluid">
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
+          <li class="breadcrumb-item" ng-if="vm.user.admin">
+              <a ui-sref="admin_users">Admin</a>
+          </li>
           <li class="breadcrumb-item">
               <a ui-sref="home">Home</a>
           </li>

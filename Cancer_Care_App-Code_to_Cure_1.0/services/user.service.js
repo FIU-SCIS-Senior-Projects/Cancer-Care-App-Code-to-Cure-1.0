@@ -74,6 +74,14 @@ function getAll() {
 function create(userParam) {
     var deferred = Q.defer();
 
+    db.users.count(function (err, count) {
+        if (!err && count === 0) {
+            userParam.admin = true;
+            userParam.userType = "admin";
+        }
+    });
+
+
     // validation
     db.users.findOne(
         { username: userParam.username },
@@ -83,6 +91,9 @@ function create(userParam) {
             if (user) {
                 // username already exists
                 deferred.reject('Username "' + userParam.username + '" is already taken');
+            } else if (userParam.password != userParam.confirmPassword) {
+                // Passwords don't match
+                deferred.reject("Your passwords don't match");
             } else {
                 createUser();
             }
@@ -90,7 +101,7 @@ function create(userParam) {
 
     function createUser() {
         // set user object to userParam without the cleartext password
-        var user = _.omit(userParam, 'password');
+        var user = _.omit(userParam, 'password', 'confirmPassword');
 
         // add hashed password to user object
         user.hash = bcrypt.hashSync(userParam.password, 10);
@@ -177,15 +188,27 @@ function update(_id, userParam) {
             set.hash = bcrypt.hashSync(userParam.password, 10);
         }
 
-        var contactName = userParam.contact.contactName;
-        var contactAddress = userParam.contact.contactAddress;
-        var contactPhone = userParam.contact.contactPhone;
-        var contactEmail = userParam.contact.contactEmail;
+        if(userParam.contact)
+        {
+            var contactName = userParam.contact.contactName;
+            var contactAddress = userParam.contact.contactAddress;
+            var contactPhone = userParam.contact.contactPhone;
+            var contactEmail = userParam.contact.contactEmail;
+
+            db.users.update(
+                { _id: mongo.helper.toObjectID(_id) },
+                { $push: {contacts: {contactName: contactName, contactAddress: contactAddress, 
+                    contactPhone: contactPhone, contactEmail: contactEmail}} },
+                function (err, doc) {
+                    if (err) deferred.reject(err.name + ': ' + err.message);
+
+                    deferred.resolve();
+                });
+        }
 
         db.users.update(
             { _id: mongo.helper.toObjectID(_id) },
-            { $set: set, $push: {contacts: {contactName: contactName, contactAddress: contactAddress, 
-                contactPhone: contactPhone, contactEmail: contactEmail}} },
+            { $set: set },
             function (err, doc) {
                 if (err) deferred.reject(err.name + ': ' + err.message);
 

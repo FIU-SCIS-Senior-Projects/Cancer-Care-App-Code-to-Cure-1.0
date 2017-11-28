@@ -1,0 +1,73 @@
+﻿<div class="content-wrapper">
+  <div class="container-fluid">
+      <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item ng-scope" ng-if="vm.user.admin">
+              <a ui-sref="admin_users">Admin</a>
+          </li>
+          <li class="breadcrumb-item">
+              <a ui-sref="home">Home</a>
+          </li>
+          <li class="breadcrumb-item active">Resources</li>
+        </ol>
+
+        <div class="row-fluid top30 pagetitle">
+          <div class="container">  
+            <div class="row">
+              <div class="col-md-12"><h1>Admin</h1></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+            <div class="row my-2">
+                <div class="col-lg-8 order-lg-2">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a ui-sref="admin_users" data-target="#users" data-toggle="tab" class="nav-link">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a ui-sref="admin_forum" data-target="#posts" data-toggle="tab" class="nav-link">Posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a ui-sref="admin_events" data-target="#events" data-toggle="tab" class="nav-link">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a ui-sref="admin_resources" data-target="#resources" data-toggle="tab" class="nav-link active">Resources</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content py-4">
+                        <div class="tab-pane active" id="resources">
+                            <div class="card-body">
+                              <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                  <thead>
+                                    <tr>
+                                      <th>Title</th>
+                                      <th>Published Date</th>
+                                      <th>Summary</th>
+                                      <th>Author</th>
+                                      <th>URL</th>
+                                      <th>Actions</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr ng-repeat="resource in vm.resources">
+                                      <td>{{resource.title}}</td>
+                                      <td>{{resource.date}}</td>
+                                      <td>{{resource.summary}}</td>
+                                      <td>{{resource.author}}</td>
+                                      <td>{{resource.url}}</td>
+                                      <td><button ng-click="vm.deleteResource(resource._id)"><i class="fa fa-trash"></i></button></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

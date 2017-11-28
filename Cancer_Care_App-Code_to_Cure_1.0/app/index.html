@@ -8,14 +8,11 @@
           <meta name="author" content="">
           <title>Cancer Care App - Code to Cure 1.0</title>
           <!-- Bootstrap core CSS-->
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+          <link href="css/bootstrap.min.css" rel="stylesheet">
           <!-- Custom styles for this template-->
           <link href="css/sb-admin.css" rel="stylesheet">
           <link rel="stylesheet" type="text/css" href="/app/css/inbox.css"/>
           <script src="https://use.fontawesome.com/7d636087c5.js"></script>
-
-
-
     </head>
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         
@@ -23,7 +20,7 @@
         <header>
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-                <a class="navbar-brand" ui-sref="home">Cancer Care App - Code to Cure 1.0</a>
+                <a class="navbar-brand" ui-sref="home"><img src="/app/app-content/shaihn-logo.png" class="clear" style="width: 172px; height: 40px"></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -31,26 +28,25 @@
                     <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home" ng-class="{active: activeTab === 'home'}">
                             <a class="nav-link" ui-sref="home">
-                                <i class="fa fa-fw fa-home"></i>
-                                <span class="nav-link-text">Home</span>
+                                <i class="fa fa-lg fa-home"></i>
+                                <span class="nav-link-text">&nbsp Home</span>
                             </a>
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Scheduler" ng-class="{active: activeTab === 'scheduler'}">
                             <a class="nav-link" ui-sref="scheduler">
-                                <i class="fa fa-fw fa-calendar"></i>
-                                <span class="nav-link-text">Scheduler</span></a>
-                            </a>
+                                <i class="fa fa-lg fa-calendar"></i>
+                                <span class="nav-link-text">&nbsp Scheduler</span></a>
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Resources" ng-class="{active: activeTab === 'resources'}">
                           <a class="nav-link" ui-sref="resources">
-                            <i class="fa fa-fw fa-book"></i>
-                            <span class="nav-link-text">Resources</span>
+                            <i class="fa fa-lg fa-book"></i>
+                            <span class="nav-link-text">&nbsp Resources</span>
                           </a>
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMessages" data-parent="#exampleAccordion">
-                            <i class="fa fa-fw fa-envelope"></i>
-                            <span class="nav-link-text">Messages</span>
+                            <i class="fa fa-lg fa-envelope"></i>
+                            <span class="nav-link-text">&nbsp Messages</span>
                           </a>
                           <ul class="sidenav-second-level collapse" id="collapseMessages">
                             <li ng-class="{active: activeTab === 'inbox'}">
@@ -63,8 +59,8 @@
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Community">
                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCommunity" data-parent="#exampleAccordion">
-                            <i class="fa fa-fw fa-users"></i>
-                            <span class="nav-link-text">Community</span>
+                            <i class="fa fa-lg fa-users"></i>
+                            <span class="nav-link-text">&nbsp Community</span>
                           </a>
                           <ul class="sidenav-second-level collapse" id="collapseCommunity">
                             <li ng-class="{active: activeTab === 'forum'}">
@@ -77,8 +73,8 @@
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Profile">
                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
-                            <i class="fa fa-fw fa-user-circle-o"></i>
-                            <span class="nav-link-text">Profile</span>
+                            <i class="fa fa-lg fa-user-circle-o"></i>
+                            <span class="nav-link-text">&nbsp Profile</span>
                           </a>
                           <ul class="sidenav-second-level collapse" id="collapseProfile">
                             <li ng-class="{active: activeTab === 'account'}">
@@ -94,15 +90,15 @@
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Support" ng-class="{active: activeTab === 'support'}">
                             <a class="nav-link" ui-sref="support">
-                                <i class="fa fa-fw fa-headphones"></i>
-                                <span class="nav-link-text">Support</span>
+                                <i class="fa fa-lg fa-headphones"></i>
+                                <span class="nav-link-text">&nbsp Support</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="navbar-nav sidenav-toggler">
                         <li class="nav-item">
                             <a class="nav-link text-center" id="sidenavToggler">
-                                <i class="fa fa-fw fa-angle-left"></i>
+                                <i class="fa fa-angle-left"></i>
                             </a>
                         </li>
                     </ul>
@@ -111,10 +107,6 @@
                           <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-fw fa-envelope"></i>
                             <span class="d-lg-none">Messages
-                              <span class="badge badge-pill badge-primary">1 New</span>
-                            </span>
-                            <span class="indicator text-primary d-none d-lg-block">
-                              <i class="fa fa-fw fa-circle"></i>
                             </span>
                           </a>
                           <div class="dropdown-menu" aria-labelledby="messagesDropdown">
@@ -133,10 +125,6 @@
                           <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-fw fa-bell"></i>
                             <span class="d-lg-none">Alerts
-                              <span class="badge badge-pill badge-warning">1 New</span>
-                            </span>
-                            <span class="indicator text-warning d-none d-lg-block">
-                              <i class="fa fa-fw fa-circle"></i>
                             </span>
                           </a>
                           <div class="dropdown-menu" aria-labelledby="alertsDropdown">
@@ -227,6 +215,7 @@
         <script src="app-services/user.service.js"></script>
         <script src="app-services/post.service.js"></script>
         <script src="app-services/event.service.js"></script>
+        <script src="app-services/resource.service.js"></script>
         <script src="app-services/flash.service.js"></script>
         <script src="home/index.controller.js"></script>
         <script src="account/index.controller.js"></script>
@@ -245,5 +234,9 @@
         <script src="support/index.controller.js"></script>
         <script src="forum_detail/index.controller.js"></script>
         <script src="js/scheduler.js"></script>
+        <script src="admin/events/index.controller.js"></script>
+        <script src="admin/users/index.controller.js"></script>
+        <script src="admin/forum/index.controller.js"></script>
+        <script src="admin/resources/index.controller.js"></script>
     </body>
 </html>

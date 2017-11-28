@@ -14,6 +14,7 @@
         service.GetById = GetById;
         service.Save = Save;
         service.Update = Update;
+        service.Delete = Delete;
 
         return service;
 
@@ -30,6 +31,10 @@
         }
         function Update(event) {
             return $http.put('/api/events/' + event.eventData._id, event).then(handleSuccess, handleError);
+        }
+        function Delete(_id) 
+        {
+            return $http.delete('/api/events/' + _id).then(handleSuccess, handleError);
         }
 
         // private functions

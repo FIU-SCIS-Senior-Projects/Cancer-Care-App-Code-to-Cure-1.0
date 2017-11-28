@@ -9,6 +9,7 @@ router.get('/', getAllEvents);
 router.post('/', create);
 router.get('/:_id', getById);
 router.put('/:_id', update);
+router.delete('/:_id', deleteEvent);
 
 module.exports = router;
 
@@ -48,6 +49,17 @@ function getById(req, res) {
 
 function update(req, res) {
     eventService.update(req.body)
+        .then(function () {
+            res.sendStatus(200);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function deleteEvent(req, res) {
+
+    eventService.delete(req.params._id)
         .then(function () {
             res.sendStatus(200);
         })

@@ -6,20 +6,28 @@
             <div class="alert alert-danger"><%= error %></div>
         <% } %>
         <p>
-            <label for="firstName">First name</label>
-            <input type="text" name="firstName" id="firstName" value="<%= locals.firstName || '' %>" placeholder="Enter your first name" required="required" />
+            <label for="userType">I'm a &nbsp</label>
+            <select name="userType" id="userType" required>
+              <option disabled value="" selected>Select one</option>
+              <option value="provider">Healthcare Provider</option>
+              <option value="patient">Patient/Caregiver</option>
+            </select>
         </p>
         <p>
-            <label for="lastName">Last name</label>
-            <input type="text" name="lastName" id="lastName" value="<%= locals.lastName || '' %>" placeholder="Enter your last name" required="required"/>
-        </p>
-        <p>
-            <label for="username" class="uname" >Username</label>
+            <label for="username" class="uname">Username</label>
             <input type="text" name="username" id="username" value="<%= locals.username || '' %>" placeholder="Create a username" required="required" />
+        </p>
+        <p>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" value="<%= locals.email || '' %>" placeholder="email@example.com" required="required"/>
         </p>
         <p>
             <label for="password" class="youpasswd">Password</label>
             <input type="password" name="password" id="password" placeholder="Create a password" required="required" />
+        </p>
+        <p>
+            <label for="confirmPassword" class="youpasswd">Confirm Password</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm your password" required="required" />
         </p>
         <p class="signin button"> 
             <input type="submit" value="Sign up"/> 

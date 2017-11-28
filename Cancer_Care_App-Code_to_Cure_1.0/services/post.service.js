@@ -13,6 +13,7 @@ service.getAll = getAll;
 service.getById = getById;
 service.create = create;
 service.update = update;
+service.delete = _delete;
 
 module.exports = service;
 
@@ -74,6 +75,20 @@ function update(postContent) {
         { _id: mongo.helper.toObjectID(_id) },
         { $push: {comments: {body: comment, author: author}}, $inc: {replies: 1} },
         function (err, doc) {
+            if (err) deferred.reject(err.name + ': ' + err.message);
+
+            deferred.resolve();
+        });
+
+    return deferred.promise;
+}
+
+function _delete(_id) {
+    var deferred = Q.defer();
+
+    db.posts.remove(
+        { _id: mongo.helper.toObjectID(_id) },
+        function (err) {
             if (err) deferred.reject(err.name + ': ' + err.message);
 
             deferred.resolve();

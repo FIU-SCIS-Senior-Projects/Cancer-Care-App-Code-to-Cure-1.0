@@ -27,7 +27,11 @@
 
         function saveUser() 
         {
-            UserService.Update(vm.user)
+            if(vm.user.password != vm.user.confirmPassword){
+                FlashService.Error("Your passwords don't match");
+            }
+            else{
+                UserService.Update(vm.user)
                 .then(function () 
                 {
                     FlashService.Success('User updated');
@@ -36,6 +40,7 @@
                 {
                     FlashService.Error(error);
                 });
+            }
         }
 
         function deleteUser() 

@@ -22,6 +22,7 @@ app.use('/app', require('./controllers/app.controller'));
 app.use('/api/users', require('./controllers/api/users.controller'));
 app.use('/api/posts', require('./controllers/api/posts.controller'));
 app.use('/api/events', require('./controllers/api/events.controller'));
+app.use('/api/resources', require('./controllers/api/resource.controller'));
 
 // make '/app' default route
 app.get('/', function (req, res) {

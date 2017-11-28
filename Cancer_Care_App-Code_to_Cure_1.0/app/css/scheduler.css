@@ -75,14 +75,14 @@ td.fc-today {
 }
 
 .fc-first th{
-    background:#607589 !important;
+    background:#393b37 !important;
 	color:#FFF;
 	font-size:14px !important;
 	font-weight:500 !important;
 
 	}
 .fc-event-inner {
-    background: #03a9f3!important;
+    background: #05b77d!important;
     color: #FFF!important;
     font-size: 12px!important;
     font-weight: 500!important;
@@ -149,11 +149,11 @@ html .fc,
     margin-bottom: 10px;
 }
 	span.fc-button {
-    border-color: #607589;
-	color: #607589;
+    border-color: #393b37;
+	color: #393b37;
 }
 .fc-state-down, .fc-state-active {
-    background-color: #607589 !important;
+    background-color: #393b37 !important;
 	color: #FFF !important;
 }
 .fc .fc-header-space {
